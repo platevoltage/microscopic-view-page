@@ -1,9 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
+import {
+  type Container,
+  type ISourceOptions,
+  MoveDirection,
+  OutMode,
+} from "@tsparticles/engine";
 // import { loadAll } from "@tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import testImage from "./assets/react.svg";
+import testImage2 from "./assets/chip.svg";
+
 
 export default function App() {
   const [init, setInit] = useState(false);
@@ -23,15 +32,15 @@ export default function App() {
     });
   }, []);
 
-  const particlesLoaded = (container: any) => {
+  const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container);
   };
 
-  const options = useMemo(
+  const options: ISourceOptions = useMemo(
     () => ({
       background: {
         color: {
-          value: "#0d47a1",
+          value: "#0000aa",
         },
       },
       fpsLimit: 120,
@@ -63,35 +72,67 @@ export default function App() {
         links: {
           color: "#ffffff",
           distance: 150,
-          enable: true,
-          opacity: 0.5,
+          enable: false,
+          opacity: 0.8,
           width: 1,
         },
         move: {
-          direction: "none",
+          direction: MoveDirection.none,
           enable: true,
           outModes: {
-            default: "bounce",
+            default: OutMode.out,
           },
           random: false,
-          speed: 6,
+          speed: 10,
           straight: false,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 30,
         },
         opacity: {
-          value: 0.5,
+          value: 0.8,
         },
         shape: {
-          type: "circle",
+          type: ["image"],
+          options: {
+            image: [
+              {
+                src: testImage,
+                width: 10,
+                height: 10,
+                replaceColor: true
+              },
+              {
+                src: testImage2,
+                width: 10,
+                height: 10,
+                replaceColor: true
+              }
+            ],
+          }
         },
         size: {
-          value: { min: 1, max: 5 },
+          value: { min: 20, max: 80 },
         },
+        rotate: {
+          value: 45, // Start rotation angle (degrees)
+          animation: {
+            enable: true,
+            speed: 10, // Rotation speed (higher is faster)
+            sync: false, // All particles rotate at the same speed
+          },
+        },
+        collisions: {
+
+            enable: true,  // Enable collisions
+  
+          
+          
+        }
+        
       },
       detectRetina: true,
     }),
@@ -100,11 +141,17 @@ export default function App() {
 
   if (init) {
     return (
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-      />
+      <>
+        <Particles
+          id="tsparticles"
+          particlesLoaded={particlesLoaded}
+          options={options}
+        />
+        {/* <div style={{color: "white", position: "absolute", top: 0}}>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Example.svg"></img>
+        </div> */}
+        
+      </>
     );
   }
 
