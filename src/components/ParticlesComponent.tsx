@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
   type Container,
@@ -14,7 +14,13 @@ import testImage from "../assets/react.svg";
 import testImage2 from "../assets/chip.svg";
 
 
-export default function ParticlesComponent() {
+export const ParticlesComponent = memo(() => {
+  return <ParticlesComponentX />;
+});
+
+export default ParticlesComponent;
+
+function ParticlesComponentX() {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -36,102 +42,104 @@ export default function ParticlesComponent() {
     console.log(container);
   };
 
-  const options: ISourceOptions = useMemo(
-    () => ({
-      background: {
-        color: {
-          value: "#0000aa",
-        },
+  const x: ISourceOptions = {
+    background: {
+      color: {
+        value: "#0000aa",
       },
-      fpsLimit: 120,
-      interactivity: {
-        events: {
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
-          onHover: {
-            enable: true,
-            mode: "repulse",
-          },
-        },
-        modes: {
-          push: {
-            quantity: 4,
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
-        },
-      },
-      particles: {
-        color: {
-          value: "#ffffff",
-        },
-        links: {
-          color: "#ffffff",
-          distance: 150,
-          enable: false,
-          opacity: 0.8,
-          width: 1,
-        },
-        move: {
-          direction: MoveDirection.none,
+    },
+    fpsLimit: 120,
+    interactivity: {
+      events: {
+        onClick: {
           enable: true,
-          outModes: {
-            default: OutMode.out,
-          },
-          random: false,
-          speed: 10,
-          straight: false,
+          mode: "push",
         },
-        number: {
-          density: {
-            enable: true,
-          },
-          value: 30,
+        onHover: {
+          enable: true,
+          mode: "repulse",
         },
-        opacity: {
-          value: 0.8,
-        },
-        shape: {
-          type: ["image"],
-          options: {
-            image: [
-              {
-                src: testImage,
-                width: 10,
-                height: 10,
-                replaceColor: true
-              },
-              {
-                src: testImage2,
-                width: 10,
-                height: 10,
-                replaceColor: true
-              }
-            ],
-          }
-        },
-        size: {
-          value: { min: 20, max: 80 },
-        },
-        rotate: {
-          value: 45, // Start rotation angle (degrees)
-          animation: {
-            enable: true,
-            speed: 10, // Rotation speed (higher is faster)
-            sync: false, // All particles rotate at the same speed
-          },
-        },
-        collisions: {
-          enable: true,  // Enable collisions
-        }
-        
       },
-      detectRetina: true,
-    }),
+      modes: {
+        push: {
+          quantity: 4,
+        },
+        repulse: {
+          distance: 200,
+          duration: 0.4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: "#ffffff",
+      },
+      links: {
+        color: "#ffffff",
+        distance: 150,
+        enable: false,
+        opacity: 0.8,
+        width: 1,
+      },
+      move: {
+        direction: MoveDirection.bottomRight,
+        enable: true,
+        outModes: {
+          default: OutMode.out,
+        },
+        random: true,
+        speed: 1,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+        },
+        value: 30,
+      },
+      opacity: {
+        value: 0.5,
+      },
+      shape: {
+        type: ["image"],
+        options: {
+          image: [
+            {
+              src: testImage,
+              width: 10,
+              height: 10,
+              replaceColor: true
+            },
+            {
+              src: testImage2,
+              width: 10,
+              height: 10,
+              replaceColor: true
+            }
+          ],
+        }
+      },
+      size: {
+        value: { min: 20, max: 80 },
+      },
+      rotate: {
+        value: 45, // Start rotation angle (degrees)
+        animation: {
+          enable: true,
+          speed: 4, // Rotation speed (higher is faster)
+          sync: false, // All particles rotate at the same speed
+        },
+      },
+      collisions: {
+        enable: true,  // Enable collisions
+      }
+        
+    },
+    detectRetina: true,
+    
+  };
+
+  const options: ISourceOptions = useMemo(() => (x),
     [],
   );
 
