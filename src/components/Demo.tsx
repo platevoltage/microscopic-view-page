@@ -5,7 +5,7 @@ export default function Demo() {
 
   return (
     <>
-      <h2>See How it works in your browser.</h2>
+      <h2>In Browser Demo.</h2>
       <div style={{display: "flex", justifyContent: "center", marginTop: "20px", position: "relative", height: isRunning ? "500px" : "100px", transition: ".4s height"}}>
         {isRunning ?
           <div style={{width: "860px", height: isRunning ? "500px" : "100px", position: "relative", borderRadius: "10px", transition: ".4s height", overflow: "hidden"}}>

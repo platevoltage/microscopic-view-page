@@ -83,3 +83,16 @@ button:disabled {
   background-color: #555555;
   color: #999999
 }
+
+nav button {
+  border: none;
+  background-color: transparent;
+}
+
+nav button:hover {
+  background-color: #555555;
+}
+
+a {
+  color: #89c6ff;
+}

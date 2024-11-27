@@ -3,13 +3,15 @@ import ParticlesComponent from "./components/ParticlesComponent";
 import NavBar from "./components/NavBar";
 import Demo from "./components/Demo";
 import screenShot from "./assets/screen-shot.png";
-
+import Support from "./components/Support";
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from "react-scroll";
+import Divider from "./components/divider";
 
 
 export default function App() {
   const [ navTransform, setNavTransform ] = useState(false);
   const [ scrollY, setScrollY ]= useState<number>(0);
-  const [ submitting, setSubmitting ] = useState(false);
+
 
   useEffect(() => {
     const logScroll = () => {
@@ -86,68 +88,26 @@ export default function App() {
           
           <div style={{textAlign: "center"}}>
             <h2>A Webcam viewer optimized for USB Microscopes.</h2>
+            <Divider />
+            <Element name="about"></Element>
+            <div style={{width: "100%", border: "0px solid yellow", display: "flex", justifyContent: "center"}}>
+              <p style={{maxWidth: "800px", fontSize: "1.1em"}}>With the advent of cheap, but serviceable USB microscopes, came the need for a viewer that serves the needs of the people that work with them. These microscopes work just like a regular USB webcams, yet most webcam software is unsuitable for the job. The job is simple. We don't need to record video, we just need an unobtrusive viewer that can be resized, kept on top of other windows, and zoomed in and out. Microscopic View is built with Tauri 2.0 framework for cross platform compatibility, while retaining the speed and binary size of a native application.</p>
+            </div>
             <img src={screenShot} style={{width: "860px", border: "1px solid #ffffff22", boxShadow: "1px 2px 10px black", borderRadius: "10px", margin: "20px 0px"}} />
           </div>
-          
-          
+          <Divider />
+          <Element name="demo"></Element>
           <Demo />
-          
-          <div className="form-container">
-            <h2>Support Form</h2>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                setSubmitting(true);
-                const form = e.target as HTMLFormElement;
+          <Divider />
+          <Element name="support"></Element>
+          <Support />
+          <div style={{margin: "100px"}}></div>
+          <Divider />
 
-                // Collect form data
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-        
-                try {
-                // Submit using fetch
-                  const response = await fetch("https://formsubmit.co/ajax/2c6bbb4c141e8f4a53d165f507d52c8e", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                  });
-        
-                  if (response.ok) {
-                    alert("Form submitted successfully!");
-                  } else {
-                    alert("Failed to submit the form.");
-                  }
-                } catch (error) {
-                  console.error("Error submitting form:", error);
-                  alert("An error occurred. Please try again later.");
-                } finally {
-                  setSubmitting(false);
-                  form.reset();
-                }
-              }}
-            >
-              <div className="form-group">
-                <label htmlFor="subject">Subject :</label>
-                <input type="text" id="subject" name="subject" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">How Can We Help? :</label>
-                <textarea id="message" name="message" required></textarea>
-              </div>
-              <div className="form-group">
-                <label htmlFor="name">Your Name :</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Your Email:</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div className="form-group">
-                <button type="submit" disabled={submitting}>{submitting ? "Please Wait...": "Submit"}</button>
-              </div>
-            </form>
+          
+          <div style={{textAlign: "center", margin: "40px 0 60px 0"}}>
+            <span>Written by Garrett Corbin &nbsp; x &nbsp; </span>
+            <a href="https://jgarrettcorbin.com" target="_blank" rel="noreferrer">https://jgarrettcorbin.com</a>
           </div>
         </div>
       </div>
