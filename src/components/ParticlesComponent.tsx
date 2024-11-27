@@ -12,6 +12,8 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 import testImage from "../assets/react.svg";
 import testImage2 from "../assets/chip.svg";
+import fingerPrint from "../assets/finger.svg";
+import { Opacity } from "@mui/icons-material";
 
 
 export const ParticlesComponent = memo(() => {
@@ -98,7 +100,7 @@ function ParticlesComponentX() {
         value: 30,
       },
       opacity: {
-        value: 0.3,
+        value: 0.2,
       },
       shape: {
         type: ["image"],
@@ -115,12 +117,18 @@ function ParticlesComponentX() {
               width: 10,
               height: 10,
               replaceColor: true
+            },
+            {
+              src: fingerPrint,
+              width: 3,
+              height: 4,
+              replaceColor: true
             }
           ],
         }
       },
       size: {
-        value: { min: 20, max: 80 },
+        value: { min: 10, max: 80 },
       },
       rotate: {
         value: 45, // Start rotation angle (degrees)
