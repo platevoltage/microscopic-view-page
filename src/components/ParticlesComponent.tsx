@@ -45,7 +45,7 @@ function ParticlesComponentX() {
   const x: ISourceOptions = {
     background: {
       color: {
-        value: "#0000aa",
+        value: "#0E2945",
       },
     },
     fpsLimit: 120,
@@ -98,7 +98,7 @@ function ParticlesComponentX() {
         value: 30,
       },
       opacity: {
-        value: 0.5,
+        value: 0.3,
       },
       shape: {
         type: ["image"],
