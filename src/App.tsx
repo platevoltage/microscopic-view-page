@@ -5,7 +5,7 @@ import Demo from "./components/Demo";
 import screenShot from "./assets/screen-shot.png";
 import Support from "./components/Support";
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from "react-scroll";
-import Divider from "./components/divider";
+import Divider from "./components/Divider";
 
 
 export default function App() {

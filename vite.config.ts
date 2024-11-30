@@ -12,6 +12,10 @@ export default defineConfig({
           src: "demo", // Source folder (relative to project root)
           dest: "./", // Destination folder in the build output
         },
+        {
+          src: "CNAME",
+          dest: "./"
+        }
       ],
     }),
   ],
