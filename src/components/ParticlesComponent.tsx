@@ -74,7 +74,7 @@ function ParticlesComponentX() {
     },
     particles: {
       color: {
-        value: "#ffffff",
+        value: "#2Dc3D3",
       },
       links: {
         color: "#ffffff",
@@ -100,7 +100,7 @@ function ParticlesComponentX() {
         value: 30,
       },
       opacity: {
-        value: 0.2,
+        value: 0.3,
       },
       shape: {
         type: ["image"],

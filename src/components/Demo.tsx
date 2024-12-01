@@ -7,7 +7,7 @@ export default function Demo() {
 
   useEffect(() => {
     let timeout: number | undefined;
-    const timeStart = new Date().getTime() + 1200000;
+    const timeStart = new Date().getTime() + 240000;
     // setSecondsLeft(timeStart);
     if (isRunning) {
       timeout = setInterval(() => {

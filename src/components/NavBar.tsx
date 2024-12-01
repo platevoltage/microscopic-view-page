@@ -38,6 +38,7 @@ export default function NavBar({navTransform}:Props) {
       left: 0, 
       right: 0, 
       height: "60px", 
+      boxShadow: navTransform ? "0px 4px 20px black" : "none",
     }}>
       <div style={{...bgStyle, top: 0, transitionDelay: !navTransform ? ".1s" : ".6s, .6s"}}></div>
       <div style={{...bgStyle, top: 10, transitionDelay: !navTransform ? ".1s" : ".5s, .5s"}}></div>
@@ -79,7 +80,8 @@ export default function NavBar({navTransform}:Props) {
         </div>
       </nav>
       <div style={{
-        backgroundColor: "#2D83D3", 
+        // backgroundColor: "#2D83D3", 
+        background: "linear-gradient(135deg, #2D83D3, #2Dc3D3)",
         height: "4px",
         position: "absolute", 
         bottom: 0, 

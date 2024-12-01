@@ -27,10 +27,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!navTransform && window.scrollY > 80) {
+    if (!navTransform && window.scrollY > 50) {
       console.log("fold");
       setNavTransform(true);
-    } else if (navTransform && window.scrollY <= 80) {
+    } else if (navTransform && window.scrollY <= 50) {
       console.log("unfold");
       setNavTransform(false);
     }
@@ -69,7 +69,7 @@ export default function App() {
             zIndex: 10, 
             textAlign: "center", 
             position: navTransform ? "fixed" : "relative", 
-            top: "-1em", 
+            top: "-1.2em", 
             // border: "1px solid red",
             transitionProperty: "transform, margin, top",
             transitionDuration: navTransform ? ".1s, .1s, .1s" : ".1s, .1s, 0s",
