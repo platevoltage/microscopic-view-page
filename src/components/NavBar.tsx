@@ -71,7 +71,7 @@ export default function NavBar({navTransform}:Props) {
           <Link to="support" smooth={true} offset={-70}>
             <button style={{margin: "10px"}}><ContactSupportIcon style={{margin: "-6px 4px"}}/>Get Help</button>
           </Link>
-          <Link to="demo" smooth={true} offset={-70}>
+          <Link to="download" smooth={true} offset={-70}>
             <button style={{margin: "10px"}}><DownloadIcon style={{margin: "-6px 4px"}}/>Download</button>
           </Link>
           <Link to="demo" smooth={true} offset={-70}>

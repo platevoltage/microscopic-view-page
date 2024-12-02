@@ -3,6 +3,7 @@ import ParticlesComponent from "./components/ParticlesComponent";
 import NavBar from "./components/NavBar";
 import Demo from "./components/Demo";
 import screenShot from "./assets/screen-shot.png";
+import appleStore from "./assets/app-store-button.png";
 import Support from "./components/Support";
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from "react-scroll";
 import Divider from "./components/Divider";
@@ -88,18 +89,23 @@ export default function App() {
           
           <div style={{textAlign: "center"}}>
             <h2>A Webcam viewer optimized for USB Microscopes.</h2>
+            <Element name="download" />
+            <div style={{ height: "60px", marginTop: "30px"}}>
+              <img src={appleStore} style={{height: "60px"}} />
+              <p style={{lineHeight: 1, marginTop: "0px", fontSize: ".8em" }}>coming soon</p>
+            </div>
             <Divider />
-            <Element name="about"></Element>
+            <Element name="about" />
             <div style={{width: "100%", border: "0px solid yellow", display: "flex", justifyContent: "center"}}>
               <p style={{maxWidth: "800px", fontSize: "1.1em"}}>With the advent of cheap, but serviceable USB microscopes, came the need for a viewer that serves the needs of the people that work with them. These microscopes work just like a regular USB webcams, yet most webcam software is unsuitable for the job. The job is simple. We don't need to record video, we just need an unobtrusive viewer that can be resized, kept on top of other windows, and zoomed in and out. Microscopic View is built with Tauri 2.0 framework for cross platform compatibility, while retaining the speed and binary size of a native application.</p>
             </div>
             <img src={screenShot} style={{width: "860px", border: "1px solid #ffffff22", boxShadow: "1px 2px 10px black", borderRadius: "10px", margin: "20px 0px"}} />
           </div>
           <Divider />
-          <Element name="demo"></Element>
+          <Element name="demo" />
           <Demo />
           <Divider />
-          <Element name="support"></Element>
+          <Element name="support" />
           <Support />
           <div style={{margin: "100px"}}></div>
           <Divider />
